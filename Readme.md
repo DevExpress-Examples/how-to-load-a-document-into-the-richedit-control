@@ -1,3 +1,8 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Form1.cs](./CS/LoadDocumentExample/Form1.cs) (VB: [Form1.vb](./VB/LoadDocumentExample/Form1.vb))
+<!-- default file list end -->
 # How to load a document into the RichEdit control
 
 
