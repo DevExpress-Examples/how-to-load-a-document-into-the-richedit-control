@@ -21,12 +21,11 @@ Namespace LoadDocumentExample
         End Sub
 
         Private Sub btnFromStream_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnFromStream.Click
-'            #Region "#IFormatDetectorService"
+            '            #Region "#from-stream"
             Using stream As Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LoadDocumentExample.TextWithImagesODT")
-                Dim format As DocumentFormat = richEditControl1.GetService(Of IFormatDetectorService)().DetectFormat(stream)
-                richEditControl1.LoadDocument(stream, format)
+                richEditControl1.LoadDocument(stream)
             End Using
-'            #End Region ' #IFormatDetectorService
+            '            #End Region ' #from-stream
         End Sub
 
         Private Sub RichEditControl1_DocumentLoaded(ByVal sender As Object, ByVal e As EventArgs)

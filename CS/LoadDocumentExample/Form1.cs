@@ -5,40 +5,46 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace LoadDocumentExample {
-    public partial class Form1 : XtraForm {
-        public Form1() {
+namespace LoadDocumentExample
+{
+    public partial class Form1 : XtraForm
+    {
+        public Form1()
+        {
             InitializeComponent();
             richEditControl1.DocumentLoaded += RichEditControl1_DocumentLoaded;
         }
 
-        private void btnFromFile_Click(object sender, EventArgs e) {
+        private void btnFromFile_Click(object sender, EventArgs e)
+        {
             #region #fromfile
             richEditControl1.LoadDocument("Grimm.docx");
             #endregion #fromfile
         }
 
-        private void btnFromStream_Click(object sender, EventArgs e) {
-            #region #IFormatDetectorService
-            using (Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LoadDocumentExample.TextWithImagesODT")) 
-                {
-                DocumentFormat format = richEditControl1.GetService<IFormatDetectorService>().DetectFormat(stream);
-                richEditControl1.LoadDocument(stream, format);
+        private void btnFromStream_Click(object sender, EventArgs e)
+        {
+            #region #from-stream
+            using (Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LoadDocumentExample.TextWithImagesODT"))
+            {
+                richEditControl1.LoadDocument(stream);
             }
-            #endregion #IFormatDetectorService
+            #endregion #from-stream
         }
 
-        private void RichEditControl1_DocumentLoaded(object sender, EventArgs e) {
+        private void RichEditControl1_DocumentLoaded(object sender, EventArgs e)
+        {
             string documentName = richEditControl1.Options.DocumentSaveOptions.CurrentFileName;
             string msg;
             if (documentName == String.Empty)
                 msg = "Current file name is empty.";
             else
                 msg = "Current file name is " + documentName;
-                MessageBox.Show(msg, "Info");
+            MessageBox.Show(msg, "Info");
         }
 
-        private void btnFromString_Click(object sender, EventArgs e) {
+        private void btnFromString_Click(object sender, EventArgs e)
+        {
             #region #fromstring
             richEditControl1.RtfText = @"{\rtf1\ansi\ansicpg1252\deff0\deflang1049
 {\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}
