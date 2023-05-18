@@ -7,31 +7,13 @@ using System.Windows.Forms;
 
 namespace LoadDocumentExample
 {
-    public partial class Form1 : XtraForm
+    public partial class Form1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public Form1()
         {
             InitializeComponent();
             richEditControl1.DocumentLoaded += RichEditControl1_DocumentLoaded;
         }
-
-        private void btnFromFile_Click(object sender, EventArgs e)
-        {
-            #region #fromfile
-            richEditControl1.LoadDocument("Grimm.docx");
-            #endregion #fromfile
-        }
-
-        private void btnFromStream_Click(object sender, EventArgs e)
-        {
-            #region #from-stream
-            using (Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LoadDocumentExample.TextWithImagesODT"))
-            {
-                richEditControl1.LoadDocument(stream);
-            }
-            #endregion #from-stream
-        }
-
         private void RichEditControl1_DocumentLoaded(object sender, EventArgs e)
         {
             string documentName = richEditControl1.Options.DocumentSaveOptions.CurrentFileName;
@@ -42,8 +24,23 @@ namespace LoadDocumentExample
                 msg = "Current file name is " + documentName;
             MessageBox.Show(msg, "Info");
         }
+        private void btnFromFile_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            #region #fromfile
+            richEditControl1.LoadDocument("Grimm.docx");
+            #endregion #fromfile
+        }
 
-        private void btnFromString_Click(object sender, EventArgs e)
+        private void btnFromStream_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            #region #from-stream
+            using (Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LoadDocumentExample.TextWithImagesODT"))
+            {
+                richEditControl1.LoadDocument(stream);
+            }
+            #endregion #from-stream
+        }
+        private void btnFromString_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             #region #fromstring
             richEditControl1.RtfText = @"{\rtf1\ansi\ansicpg1252\deff0\deflang1049

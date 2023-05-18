@@ -25,89 +25,110 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.richEditControl1 = new DevExpress.XtraRichEdit.RichEditControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnFromString = new DevExpress.XtraEditors.SimpleButton();
-            this.btnFromStream = new DevExpress.XtraEditors.SimpleButton();
-            this.btnFromFile = new DevExpress.XtraEditors.SimpleButton();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.btnLoadFile = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            this.btnLoadStream = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLoadString = new DevExpress.XtraBars.BarButtonItem();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // richEditControl1
             // 
             this.richEditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richEditControl1.Location = new System.Drawing.Point(0, 47);
+            this.richEditControl1.Location = new System.Drawing.Point(0, 183);
+            this.richEditControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.richEditControl1.MenuManager = this.ribbonControl1;
             this.richEditControl1.Name = "richEditControl1";
-            this.richEditControl1.Size = new System.Drawing.Size(1229, 655);
+            this.richEditControl1.Options.DocumentSaveOptions.CurrentFormat = DevExpress.XtraRichEdit.DocumentFormat.PlainText;
+            this.richEditControl1.Size = new System.Drawing.Size(1434, 681);
             this.richEditControl1.TabIndex = 0;
-            this.richEditControl1.Text = "richEditControl1";
             // 
-            // panelControl1
+            // ribbonControl1
             // 
-            this.panelControl1.Controls.Add(this.btnFromString);
-            this.panelControl1.Controls.Add(this.btnFromStream);
-            this.panelControl1.Controls.Add(this.btnFromFile);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1229, 47);
-            this.panelControl1.TabIndex = 1;
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem,
+            this.btnLoadFile,
+            this.btnLoadStream,
+            this.btnLoadString});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.Size = new System.Drawing.Size(1434, 183);
             // 
-            // btnFromString
+            // btnLoadFile
             // 
-            this.btnFromString.Location = new System.Drawing.Point(470, 13);
-            this.btnFromString.Name = "btnFromString";
-            this.btnFromString.Size = new System.Drawing.Size(178, 23);
-            this.btnFromString.TabIndex = 2;
-            this.btnFromString.Text = "Load Document from String";
-            this.btnFromString.Click += new System.EventHandler(this.btnFromString_Click);
+            this.btnLoadFile.Caption = "Load Document from File";
+            this.btnLoadFile.Id = 1;
+            this.btnLoadFile.Name = "btnLoadFile";
+            this.btnLoadFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFromFile_Click);
             // 
-            // btnFromStream
+            // ribbonPage1
             // 
-            this.btnFromStream.Location = new System.Drawing.Point(253, 13);
-            this.btnFromStream.Name = "btnFromStream";
-            this.btnFromStream.Size = new System.Drawing.Size(178, 23);
-            this.btnFromStream.TabIndex = 1;
-            this.btnFromStream.Text = "Load Document from Stream";
-            this.btnFromStream.Click += new System.EventHandler(this.btnFromStream_Click);
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "File";
             // 
-            // btnFromFile
+            // ribbonPageGroup1
             // 
-            this.btnFromFile.Location = new System.Drawing.Point(36, 13);
-            this.btnFromFile.Name = "btnFromFile";
-            this.btnFromFile.Size = new System.Drawing.Size(178, 23);
-            this.btnFromFile.TabIndex = 0;
-            this.btnFromFile.Text = "Load Document from File";
-            this.btnFromFile.Click += new System.EventHandler(this.btnFromFile_Click);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLoadFile);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLoadStream);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLoadString);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Load";
             // 
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
+            // btnLoadStream
+            // 
+            this.btnLoadStream.Caption = "Load Document from Stream";
+            this.btnLoadStream.Id = 2;
+            this.btnLoadStream.Name = "btnLoadStream";
+            this.btnLoadStream.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFromStream_Click);
+            // 
+            // btnLoadString
+            // 
+            this.btnLoadString.Caption = "Load Document from RTF String";
+            this.btnLoadString.Id = 3;
+            this.btnLoadString.Name = "btnLoadString";
+            this.btnLoadString.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFromString_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1229, 702);
+            this.ClientSize = new System.Drawing.Size(1434, 864);
             this.Controls.Add(this.richEditControl1);
-            this.Controls.Add(this.panelControl1);
+            this.Controls.Add(this.ribbonControl1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
+            this.Ribbon = this.ribbonControl1;
             this.Text = "Load Document Example";
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private DevExpress.XtraRichEdit.RichEditControl richEditControl1;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnFromString;
-        private DevExpress.XtraEditors.SimpleButton btnFromStream;
-        private DevExpress.XtraEditors.SimpleButton btnFromFile;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.BarButtonItem btnLoadFile;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem btnLoadStream;
+        private DevExpress.XtraBars.BarButtonItem btnLoadString;
     }
 }
 
